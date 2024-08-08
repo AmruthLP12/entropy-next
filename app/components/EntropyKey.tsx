@@ -110,8 +110,6 @@ const EntropyKey: React.FC<EntropyKeyProps> = ({ character, tokenlen }) => {
           </div>
         )}
       </div>
-      <KeyLogger/>
-      <Link href="/enter-key">enter</Link>
     </div>
   );
 };

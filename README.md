@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# WebCryptGen
 
-First, run the development server:
+WebCryptGen is a web application that generates cryptographically secure random tokens by utilizing video entropy from a user's webcam. This project is built using Next.js, React, and Tailwind CSS. The tokens generated can be used as one-time passwords (OTPs) or for other secure identification purposes. The application includes an "Enter Key" feature where users can enter a key to access secure pages, mimicking an OTP authentication flow.
+
+
+
+## Features
+
+- **Random Token Generation**: Utilizes video entropy from a user's webcam to generate secure, unpredictable tokens.
+- **Copy to Clipboard**: Easily copy the generated token with a single click, complete with a popup notification.
+- **Enter Key Authentication**: Users can enter a generated key to access a secure page, with feedback for invalid keys.
+- **Responsive Design**: The application is styled using Tailwind CSS, ensuring a responsive and clean UI.
+- **Client-Side Navigation**: Smooth page transitions using Next.js' built-in Link component.
+
+
+## Tech Stack
+
+- Next.js: Framework for building server-rendered React applications.
+- React: JavaScript library for building user interfaces.
+- TypeScript: Superset of JavaScript that adds static typing.
+- Tailwind CSS: Utility-first CSS framework for styling.
+- HTML5 Video API: Used to capture video data for generating entropy.
+
+
+## Installation
+
+To run this project locally, follow these steps:
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+ git clone https://github.com/your-username/entropy-key.git
+ cd entropy-key
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Run the development server:
+```bash
+npm run dev
+```
+    
+## Usage
 
-## Learn More
+### Generating a Token
 
-To learn more about Next.js, take a look at the following resources:
+1. Navigate  to the "Entropy Page" by clicking on the corresponding link in the navbar.
+2. Click the "Generate Token" button. The application will use your webcam to gather entropy and generate a token.
+3. Copy the token using the "Copy Token" button, and you'll see a popup notification confirming the copy.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Entering a Key
+1. Navigate to the "Enter Key Page" by clicking on the corresponding link in the navbar.
+2. Enter the previously generated token into the input field.
+3. Click "Submit". If the key matches, you will be redirected to the secured page. If not, you'll receive a notification that the key is invalid.

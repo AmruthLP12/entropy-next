@@ -4,18 +4,19 @@
 import React, { useState } from "react";
 import { useKey } from "@/context/KeyContext";
 import { useRouter } from "next/navigation";
-import KeyLogger from "../components/KeyLogger";
 
 const EnterKeyPage: React.FC = () => {
   const [inputKey, setInputKey] = useState("");
   const { generatedKey } = useKey();
   const router = useRouter();
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleKeySubmit = () => {
     if (inputKey === generatedKey) {
       router.push("/secured-page"); // Redirect to a secured page
     } else {
-      alert("Invalid Key. Please try again.");
+      setShowPopup(true);
+      setTimeout(() => setShowPopup(false), 2000);
     }
   };
 
@@ -39,7 +40,11 @@ const EnterKeyPage: React.FC = () => {
           Submit
         </button>
       </div>
-      <KeyLogger/>
+      {showPopup && (
+        <div className="absolute top-4 right-4 bg-red-500 text-white py-2 px-4 rounded shadow-lg transition duration-300">
+          Invalid Token
+        </div>
+      )}
     </div>
   );
 };
